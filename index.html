@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -111,51 +112,6 @@
                     { answerText: 'Mississippi River', isCorrect: false },
                 ],
             },
-            {
-                questionText: 'What is the capital of Japan?',
-                answerOptions: [
-                    { answerText: 'Seoul', isCorrect: false },
-                    { answerText: 'Beijing', isCorrect: false },
-                    { answerText: 'Tokyo', isCorrect: true },
-                    { answerText: 'Bangkok', isCorrect: false },
-                ],
-            },
-            {
-                questionText: 'Who painted the Mona Lisa?',
-                answerOptions: [
-                    { answerText: 'Vincent van Gogh', isCorrect: false },
-                    { answerText: 'Pablo Picasso', isCorrect: false },
-                    { answerText: 'Leonardo da Vinci', isCorrect: true },
-                    { answerText: 'Claude Monet', isCorrect: false },
-                ],
-            },
-            {
-                questionText: 'What is the largest ocean on Earth?',
-                answerOptions: [
-                    { answerText: 'Atlantic Ocean', isCorrect: false },
-                    { answerText: 'Indian Ocean', isCorrect: false },
-                    { answerText: 'Arctic Ocean', isCorrect: false },
-                    { answerText: 'Pacific Ocean', isCorrect: true },
-                ],
-            },
-            {
-                questionText: 'What is the main ingredient in guacamole?',
-                answerOptions: [
-                    { answerText: 'Tomato', isCorrect: false },
-                    { answerText: 'Onion', isCorrect: false },
-                    { answerText: 'Avocado', isCorrect: true },
-                    { answerText: 'Pepper', isCorrect: false },
-                ],
-            },
-            {
-                questionText: 'What is the capital of Australia?',
-                answerOptions: [
-                    { answerText: 'Sydney', isCorrect: false },
-                    { answerText: 'Melbourne', isCorrect: false },
-                    { answerText: 'Canberra', isCorrect: true },
-                    { answerText: 'Brisbane', isCorrect: false },
-                ],
-            },
         ];
 
         function App() {
@@ -189,6 +145,10 @@
                 }
             };
 
+            if (!questions || questions.length === 0) {
+                return <div>Loading...</div>;
+            }
+
             return (
                 <div className="w-full max-w-xl p-8 bg-white rounded-lg shadow-md">
                     {showScore ? (
@@ -204,7 +164,9 @@
                     ) : (
                         <>
                             <div className="mb-4">
-                                <h1 className="text-xl font-bold mb-2">Question {currentQuestion + 1}/{questions.length}</h1>
+                                <h1 className="text-xl font-bold mb-2">
+                                    Question {currentQuestion + 1}/{questions.length}
+                                </h1>
                                 <p className="text-gray-700">{questions[currentQuestion].questionText}</p>
                             </div>
                             <div className="space-y-4">
@@ -224,7 +186,12 @@
             );
         }
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+        ReactDOM.render(
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>,
+            document.getElementById('root')
+        );
     </script>
 </body>
 </html>

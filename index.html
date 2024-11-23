@@ -1,0 +1,230 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div id="root" class="flex items-center justify-center min-h-screen"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const allQuestions = [
+            {
+                questionText: 'What is the capital of France?',
+                answerOptions: [
+                    { answerText: 'New York', isCorrect: false },
+                    { answerText: 'London', isCorrect: false },
+                    { answerText: 'Paris', isCorrect: true },
+                    { answerText: 'Dublin', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'Who is CEO of Tesla?',
+                answerOptions: [
+                    { answerText: 'Jeff Bezos', isCorrect: false },
+                    { answerText: 'Elon Musk', isCorrect: true },
+                    { answerText: 'Bill Gates', isCorrect: false },
+                    { answerText: 'Tony Stark', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'The iPhone was created by which company?',
+                answerOptions: [
+                    { answerText: 'Apple', isCorrect: true },
+                    { answerText: 'Intel', isCorrect: false },
+                    { answerText: 'Amazon', isCorrect: false },
+                    { answerText: 'Microsoft', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'How many Harry Potter books are there?',
+                answerOptions: [
+                    { answerText: '1', isCorrect: false },
+                    { answerText: '4', isCorrect: false },
+                    { answerText: '6', isCorrect: false },
+                    { answerText: '7', isCorrect: true },
+                ],
+            },
+            {
+                questionText: 'What is the largest planet in our solar system?',
+                answerOptions: [
+                    { answerText: 'Earth', isCorrect: false },
+                    { answerText: 'Jupiter', isCorrect: true },
+                    { answerText: 'Mars', isCorrect: false },
+                    { answerText: 'Saturn', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'What is the smallest country in the world?',
+                answerOptions: [
+                    { answerText: 'Monaco', isCorrect: false },
+                    { answerText: 'Vatican City', isCorrect: true },
+                    { answerText: 'San Marino', isCorrect: false },
+                    { answerText: 'Liechtenstein', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'What is the chemical symbol for gold?',
+                answerOptions: [
+                    { answerText: 'Au', isCorrect: true },
+                    { answerText: 'Ag', isCorrect: false },
+                    { answerText: 'Pb', isCorrect: false },
+                    { answerText: 'Fe', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'Who wrote "To Kill a Mockingbird"?',
+                answerOptions: [
+                    { answerText: 'Harper Lee', isCorrect: true },
+                    { answerText: 'Mark Twain', isCorrect: false },
+                    { answerText: 'Ernest Hemingway', isCorrect: false },
+                    { answerText: 'F. Scott Fitzgerald', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'What is the hardest natural substance on Earth?',
+                answerOptions: [
+                    { answerText: 'Gold', isCorrect: false },
+                    { answerText: 'Iron', isCorrect: false },
+                    { answerText: 'Diamond', isCorrect: true },
+                    { answerText: 'Platinum', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'What is the longest river in the world?',
+                answerOptions: [
+                    { answerText: 'Amazon River', isCorrect: true },
+                    { answerText: 'Nile River', isCorrect: false },
+                    { answerText: 'Yangtze River', isCorrect: false },
+                    { answerText: 'Mississippi River', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'What is the capital of Japan?',
+                answerOptions: [
+                    { answerText: 'Seoul', isCorrect: false },
+                    { answerText: 'Beijing', isCorrect: false },
+                    { answerText: 'Tokyo', isCorrect: true },
+                    { answerText: 'Bangkok', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'Who painted the Mona Lisa?',
+                answerOptions: [
+                    { answerText: 'Vincent van Gogh', isCorrect: false },
+                    { answerText: 'Pablo Picasso', isCorrect: false },
+                    { answerText: 'Leonardo da Vinci', isCorrect: true },
+                    { answerText: 'Claude Monet', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'What is the largest ocean on Earth?',
+                answerOptions: [
+                    { answerText: 'Atlantic Ocean', isCorrect: false },
+                    { answerText: 'Indian Ocean', isCorrect: false },
+                    { answerText: 'Arctic Ocean', isCorrect: false },
+                    { answerText: 'Pacific Ocean', isCorrect: true },
+                ],
+            },
+            {
+                questionText: 'What is the main ingredient in guacamole?',
+                answerOptions: [
+                    { answerText: 'Tomato', isCorrect: false },
+                    { answerText: 'Onion', isCorrect: false },
+                    { answerText: 'Avocado', isCorrect: true },
+                    { answerText: 'Pepper', isCorrect: false },
+                ],
+            },
+            {
+                questionText: 'What is the capital of Australia?',
+                answerOptions: [
+                    { answerText: 'Sydney', isCorrect: false },
+                    { answerText: 'Melbourne', isCorrect: false },
+                    { answerText: 'Canberra', isCorrect: true },
+                    { answerText: 'Brisbane', isCorrect: false },
+                ],
+            },
+        ];
+
+        function App() {
+            const [currentQuestion, setCurrentQuestion] = useState(0);
+            const [showScore, setShowScore] = useState(false);
+            const [score, setScore] = useState(0);
+            const [questions, setQuestions] = useState([]);
+
+            useEffect(() => {
+                generateNewQuiz();
+            }, []);
+
+            const generateNewQuiz = () => {
+                const shuffledQuestions = allQuestions.sort(() => 0.5 - Math.random());
+                setQuestions(shuffledQuestions.slice(0, 10));
+                setCurrentQuestion(0);
+                setShowScore(false);
+                setScore(0);
+            };
+
+            const handleAnswerOptionClick = (isCorrect) => {
+                if (isCorrect) {
+                    setScore(score + 1);
+                }
+
+                const nextQuestion = currentQuestion + 1;
+                if (nextQuestion < questions.length) {
+                    setCurrentQuestion(nextQuestion);
+                } else {
+                    setShowScore(true);
+                }
+            };
+
+            return (
+                <div className="w-full max-w-xl p-8 bg-white rounded-lg shadow-md">
+                    {showScore ? (
+                        <div className="text-center">
+                            <h1 className="text-2xl font-bold">You scored {score} out of {questions.length}</h1>
+                            <button
+                                onClick={generateNewQuiz}
+                                className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
+                            >
+                                Generate New Quiz
+                            </button>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="mb-4">
+                                <h1 className="text-xl font-bold mb-2">Question {currentQuestion + 1}/{questions.length}</h1>
+                                <p className="text-gray-700">{questions[currentQuestion].questionText}</p>
+                            </div>
+                            <div className="space-y-4">
+                                {questions[currentQuestion].answerOptions.map((answerOption, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
+                                        className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
+                                    >
+                                        {answerOption.answerText}
+                                    </button>
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

@@ -20,7 +20,7 @@
 </head>
 
 <body class="bg-gray-100">
-    <div id="root" class="flex items-center justify-center min-h-screen"></div>
+    <div id="root" class="flex items-center justify-center min-h-screen p-4"></div>
     <script type="text/babel">
         const {useState, useEffect} = React;
 
@@ -405,10 +405,10 @@
             }
 
             return (
-                <div className="w-full max-w-xl p-8 bg-white rounded-lg shadow-md">
+                <div className="w-full max-w-2xl p-8 bg-white rounded-lg shadow-md min-h-screen flex flex-col justify-center">
                     {showScore ? (
                         <div className="text-center">
-                            <h1 className="text-2xl font-bold">You scored {score} out of {questions.length}</h1>
+                            <h1 className="text-3xl font-bold">You scored {score} out of {questions.length}</h1>
                             <button
                                 onClick={generateNewQuiz}
                                 className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
@@ -418,18 +418,18 @@
                         </div>
                     ) : (
                             <>
-                                <div className="mb-4">
-                                    <h1 className="text-xl font-bold mb-2">
+                                <div className="mb-8">
+                                    <h1 className="text-2xl font-bold mb-4">
                                         Question {currentQuestion + 1}/{questions.length}
                                     </h1>
-                                    <p className="text-gray-700">{questions[currentQuestion].questionText}</p>
+                                    <p className="text-gray-700 text-lg">{questions[currentQuestion].questionText}</p>
                                 </div>
                                 <div className="space-y-4">
                                     {questions[currentQuestion].answerOptions.map((answerOption, index) => (
                                         <button
                                             key={index}
                                             onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
-                                            className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
+                                            className="w-full py-4 px-6 bg-blue-500 text-white rounded-lg hover:bg-blue-700 text-lg"
                                         >
                                             {answerOption.answerText}
                                         </button>

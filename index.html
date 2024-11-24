@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,8 @@
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </link>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -16,101 +18,354 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-100">
     <div id="root" class="flex items-center justify-center min-h-screen"></div>
     <script type="text/babel">
-        const { useState, useEffect } = React;
+        const {useState, useEffect} = React;
 
         const allQuestions = [
             {
                 questionText: 'What is the capital of France?',
                 answerOptions: [
-                    { answerText: 'New York', isCorrect: false },
-                    { answerText: 'London', isCorrect: false },
-                    { answerText: 'Paris', isCorrect: true },
-                    { answerText: 'Dublin', isCorrect: false },
+                    {answerText: 'New York', isCorrect: false},
+                    {answerText: 'London', isCorrect: false},
+                    {answerText: 'Paris', isCorrect: true},
+                    {answerText: 'Dublin', isCorrect: false},
                 ],
             },
             {
                 questionText: 'Who is CEO of Tesla?',
                 answerOptions: [
-                    { answerText: 'Jeff Bezos', isCorrect: false },
-                    { answerText: 'Elon Musk', isCorrect: true },
-                    { answerText: 'Bill Gates', isCorrect: false },
-                    { answerText: 'Tony Stark', isCorrect: false },
+                    {answerText: 'Jeff Bezos', isCorrect: false},
+                    {answerText: 'Elon Musk', isCorrect: true},
+                    {answerText: 'Bill Gates', isCorrect: false},
+                    {answerText: 'Tony Stark', isCorrect: false},
                 ],
             },
             {
                 questionText: 'The iPhone was created by which company?',
                 answerOptions: [
-                    { answerText: 'Apple', isCorrect: true },
-                    { answerText: 'Intel', isCorrect: false },
-                    { answerText: 'Amazon', isCorrect: false },
-                    { answerText: 'Microsoft', isCorrect: false },
+                    {answerText: 'Apple', isCorrect: true},
+                    {answerText: 'Intel', isCorrect: false},
+                    {answerText: 'Amazon', isCorrect: false},
+                    {answerText: 'Microsoft', isCorrect: false},
                 ],
             },
             {
                 questionText: 'How many Harry Potter books are there?',
                 answerOptions: [
-                    { answerText: '1', isCorrect: false },
-                    { answerText: '4', isCorrect: false },
-                    { answerText: '6', isCorrect: false },
-                    { answerText: '7', isCorrect: true },
+                    {answerText: '1', isCorrect: false},
+                    {answerText: '4', isCorrect: false},
+                    {answerText: '6', isCorrect: false},
+                    {answerText: '7', isCorrect: true},
                 ],
             },
             {
                 questionText: 'What is the largest planet in our solar system?',
                 answerOptions: [
-                    { answerText: 'Earth', isCorrect: false },
-                    { answerText: 'Jupiter', isCorrect: true },
-                    { answerText: 'Mars', isCorrect: false },
-                    { answerText: 'Saturn', isCorrect: false },
+                    {answerText: 'Earth', isCorrect: false},
+                    {answerText: 'Jupiter', isCorrect: true},
+                    {answerText: 'Mars', isCorrect: false},
+                    {answerText: 'Saturn', isCorrect: false},
                 ],
             },
             {
                 questionText: 'What is the smallest country in the world?',
                 answerOptions: [
-                    { answerText: 'Monaco', isCorrect: false },
-                    { answerText: 'Vatican City', isCorrect: true },
-                    { answerText: 'San Marino', isCorrect: false },
-                    { answerText: 'Liechtenstein', isCorrect: false },
+                    {answerText: 'Monaco', isCorrect: false},
+                    {answerText: 'Vatican City', isCorrect: true},
+                    {answerText: 'San Marino', isCorrect: false},
+                    {answerText: 'Liechtenstein', isCorrect: false},
                 ],
             },
             {
                 questionText: 'What is the chemical symbol for gold?',
                 answerOptions: [
-                    { answerText: 'Au', isCorrect: true },
-                    { answerText: 'Ag', isCorrect: false },
-                    { answerText: 'Pb', isCorrect: false },
-                    { answerText: 'Fe', isCorrect: false },
+                    {answerText: 'Au', isCorrect: true},
+                    {answerText: 'Ag', isCorrect: false},
+                    {answerText: 'Pb', isCorrect: false},
+                    {answerText: 'Fe', isCorrect: false},
                 ],
             },
             {
                 questionText: 'Who wrote "To Kill a Mockingbird"?',
                 answerOptions: [
-                    { answerText: 'Harper Lee', isCorrect: true },
-                    { answerText: 'Mark Twain', isCorrect: false },
-                    { answerText: 'Ernest Hemingway', isCorrect: false },
-                    { answerText: 'F. Scott Fitzgerald', isCorrect: false },
+                    {answerText: 'Harper Lee', isCorrect: true},
+                    {answerText: 'Mark Twain', isCorrect: false},
+                    {answerText: 'Ernest Hemingway', isCorrect: false},
+                    {answerText: 'F. Scott Fitzgerald', isCorrect: false},
                 ],
             },
             {
                 questionText: 'What is the hardest natural substance on Earth?',
                 answerOptions: [
-                    { answerText: 'Gold', isCorrect: false },
-                    { answerText: 'Iron', isCorrect: false },
-                    { answerText: 'Diamond', isCorrect: true },
-                    { answerText: 'Platinum', isCorrect: false },
+                    {answerText: 'Gold', isCorrect: false},
+                    {answerText: 'Iron', isCorrect: false},
+                    {answerText: 'Diamond', isCorrect: true},
+                    {answerText: 'Platinum', isCorrect: false},
                 ],
             },
             {
                 questionText: 'What is the longest river in the world?',
                 answerOptions: [
-                    { answerText: 'Amazon River', isCorrect: true },
-                    { answerText: 'Nile River', isCorrect: false },
-                    { answerText: 'Yangtze River', isCorrect: false },
-                    { answerText: 'Mississippi River', isCorrect: false },
+                    {answerText: 'Amazon River', isCorrect: true},
+                    {answerText: 'Nile River', isCorrect: false},
+                    {answerText: 'Yangtze River', isCorrect: false},
+                    {answerText: 'Mississippi River', isCorrect: false},
                 ],
+            },
+            {
+                questionText: 'What is the capital of Japan?',
+                answerOptions: [
+                    {answerText: 'Tokyo', isCorrect: true},
+                    {answerText: 'Beijing', isCorrect: false},
+                    {answerText: 'Seoul', isCorrect: false},
+                    {answerText: 'Bangkok', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the square root of 64?',
+                answerOptions: [
+                    {answerText: '6', isCorrect: false},
+                    {answerText: '7', isCorrect: false},
+                    {answerText: '8', isCorrect: true},
+                    {answerText: '9', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'Who painted the Mona Lisa?',
+                answerOptions: [
+                    {answerText: 'Vincent van Gogh', isCorrect: false},
+                    {answerText: 'Pablo Picasso', isCorrect: false},
+                    {answerText: 'Leonardo da Vinci', isCorrect: true},
+                    {answerText: 'Claude Monet', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the chemical symbol for water?',
+                answerOptions: [
+                    {answerText: 'O2', isCorrect: false},
+                    {answerText: 'H2O', isCorrect: true},
+                    {answerText: 'CO2', isCorrect: false},
+                    {answerText: 'NaCl', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'Who wrote "Romeo and Juliet"?',
+                answerOptions: [
+                    {answerText: 'William Shakespeare', isCorrect: true},
+                    {answerText: 'Jane Austen', isCorrect: false},
+                    {answerText: 'Mark Twain', isCorrect: false},
+                    {answerText: 'Charles Dickens', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'Which planet is known as the Red Planet?',
+                answerOptions: [
+                    {answerText: 'Mars', isCorrect: true},
+                    {answerText: 'Venus', isCorrect: false},
+                    {answerText: 'Mercury', isCorrect: false},
+                    {answerText: 'Jupiter', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the largest ocean on Earth?',
+                answerOptions: [
+                    {answerText: 'Atlantic Ocean', isCorrect: false},
+                    {answerText: 'Indian Ocean', isCorrect: false},
+                    {answerText: 'Arctic Ocean', isCorrect: false},
+                    {answerText: 'Pacific Ocean', isCorrect: true}
+                ]
+            },
+            {
+                questionText: 'What is the freezing point of water in Celsius?',
+                answerOptions: [
+                    {answerText: '0°C', isCorrect: true},
+                    {answerText: '32°C', isCorrect: false},
+                    {answerText: '-32°C', isCorrect: false},
+                    {answerText: '-1°C', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'Who developed the theory of relativity?',
+                answerOptions: [
+                    {answerText: 'Isaac Newton', isCorrect: false},
+                    {answerText: 'Albert Einstein', isCorrect: true},
+                    {answerText: 'Galileo Galilei', isCorrect: false},
+                    {answerText: 'Niels Bohr', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the smallest prime number?',
+                answerOptions: [
+                    {answerText: '1', isCorrect: false},
+                    {answerText: '2', isCorrect: true},
+                    {answerText: '3', isCorrect: false},
+                    {answerText: '5', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the name of the longest river in Africa?',
+                answerOptions: [
+                    {answerText: 'Congo River', isCorrect: false},
+                    {answerText: 'Nile River', isCorrect: true},
+                    {answerText: 'Zambezi River', isCorrect: false},
+                    {answerText: 'Limpopo River', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'Who was the first president of the United States?',
+                answerOptions: [
+                    {answerText: 'George Washington', isCorrect: true},
+                    {answerText: 'Abraham Lincoln', isCorrect: false},
+                    {answerText: 'John Adams', isCorrect: false},
+                    {answerText: 'Thomas Jefferson', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'Which element has the atomic number 1?',
+                answerOptions: [
+                    {answerText: 'Hydrogen', isCorrect: true},
+                    {answerText: 'Oxygen', isCorrect: false},
+                    {answerText: 'Carbon', isCorrect: false},
+                    {answerText: 'Helium', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the largest desert in the world?',
+                answerOptions: [
+                    {answerText: 'Sahara Desert', isCorrect: false},
+                    {answerText: 'Antarctica', isCorrect: true},
+                    {answerText: 'Gobi Desert', isCorrect: false},
+                    {answerText: 'Kalahari Desert', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'How many legs does a spider have?',
+                answerOptions: [
+                    {answerText: '6', isCorrect: false},
+                    {answerText: '8', isCorrect: true},
+                    {answerText: '10', isCorrect: false},
+                    {answerText: '12', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the capital of Italy?',
+                answerOptions: [
+                    {answerText: 'Rome', isCorrect: true},
+                    {answerText: 'Florence', isCorrect: false},
+                    {answerText: 'Milan', isCorrect: false},
+                    {answerText: 'Naples', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the boiling point of water in Celsius?',
+                answerOptions: [
+                    {answerText: '100°C', isCorrect: true},
+                    {answerText: '90°C', isCorrect: false},
+                    {answerText: '80°C', isCorrect: false},
+                    {answerText: '70°C', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'Which organ is responsible for pumping blood through the body?',
+                answerOptions: [
+                    {answerText: 'Brain', isCorrect: false},
+                    {answerText: 'Lungs', isCorrect: false},
+                    {answerText: 'Heart', isCorrect: true},
+                    {answerText: 'Liver', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'Who is known as the "Father of Computers"?',
+                answerOptions: [
+                    {answerText: 'Charles Babbage', isCorrect: true},
+                    {answerText: 'Alan Turing', isCorrect: false},
+                    {answerText: 'John von Neumann', isCorrect: false},
+                    {answerText: 'Steve Jobs', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the capital of Canada?',
+                answerOptions: [
+                    {answerText: 'Toronto', isCorrect: false},
+                    {answerText: 'Ottawa', isCorrect: true},
+                    {answerText: 'Vancouver', isCorrect: false},
+                    {answerText: 'Montreal', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is 5 multiplied by 6?',
+                answerOptions: [
+                    {answerText: '30', isCorrect: true},
+                    {answerText: '35', isCorrect: false},
+                    {answerText: '25', isCorrect: false},
+                    {answerText: '40', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the largest bone in the human body?',
+                answerOptions: [
+                    {answerText: 'Femur', isCorrect: true},
+                    {answerText: 'Tibia', isCorrect: false},
+                    {answerText: 'Humerus', isCorrect: false},
+                    {answerText: 'Fibula', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the chemical formula for table salt?',
+                answerOptions: [
+                    {answerText: 'NaCl', isCorrect: true},
+                    {answerText: 'KCl', isCorrect: false},
+                    {answerText: 'CaCl2', isCorrect: false},
+                    {answerText: 'MgCl2', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the name of the process by which plants make their food?',
+                answerOptions: [
+                    {answerText: 'Respiration', isCorrect: false},
+                    {answerText: 'Photosynthesis', isCorrect: true},
+                    {answerText: 'Transpiration', isCorrect: false},
+                    {answerText: 'Digestion', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'How many continents are there on Earth?',
+                answerOptions: [
+                    {answerText: '5', isCorrect: false},
+                    {answerText: '6', isCorrect: false},
+                    {answerText: '7', isCorrect: true},
+                    {answerText: '8', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the name of the largest mammal?',
+                answerOptions: [
+                    {answerText: 'African Elephant', isCorrect: false},
+                    {answerText: 'Blue Whale', isCorrect: true},
+                    {answerText: 'Giraffe', isCorrect: false},
+                    {answerText: 'Whale Shark', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the capital of Australia?',
+                answerOptions: [
+                    {answerText: 'Sydney', isCorrect: false},
+                    {answerText: 'Canberra', isCorrect: true},
+                    {answerText: 'Melbourne', isCorrect: false},
+                    {answerText: 'Brisbane', isCorrect: false}
+                ]
+            },
+            {
+                questionText: 'What is the smallest unit of life?',
+                answerOptions: [
+                    {answerText: 'Tissue', isCorrect: false},
+                    {answerText: 'Organ', isCorrect: false},
+                    {answerText: 'Cell', isCorrect: true},
+                    {answerText: 'Atom', isCorrect: false}
+                ]
             },
         ];
 
@@ -162,26 +417,26 @@
                             </button>
                         </div>
                     ) : (
-                        <>
-                            <div className="mb-4">
-                                <h1 className="text-xl font-bold mb-2">
-                                    Question {currentQuestion + 1}/{questions.length}
-                                </h1>
-                                <p className="text-gray-700">{questions[currentQuestion].questionText}</p>
-                            </div>
-                            <div className="space-y-4">
-                                {questions[currentQuestion].answerOptions.map((answerOption, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
-                                        className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
-                                    >
-                                        {answerOption.answerText}
-                                    </button>
-                                ))}
-                            </div>
-                        </>
-                    )}
+                            <>
+                                <div className="mb-4">
+                                    <h1 className="text-xl font-bold mb-2">
+                                        Question {currentQuestion + 1}/{questions.length}
+                                    </h1>
+                                    <p className="text-gray-700">{questions[currentQuestion].questionText}</p>
+                                </div>
+                                <div className="space-y-4">
+                                    {questions[currentQuestion].answerOptions.map((answerOption, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
+                                            className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
+                                        >
+                                            {answerOption.answerText}
+                                        </button>
+                                    ))}
+                                </div>
+                            </>
+                        )}
                 </div>
             );
         }
@@ -194,4 +449,5 @@
         );
     </script>
 </body>
+
 </html>
